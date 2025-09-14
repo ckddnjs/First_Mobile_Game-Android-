@@ -12,7 +12,7 @@ public class PlayerFear : MonoBehaviour
 {
     public float currentFearPercentage = 0;
     public float maxFearPercentage = 100;
-    public float fearIncreaseRate = 0.5f;
+    public float fearIncreaseRate = 2.0f;
 
     public FearState currentFearState;
     public FearState preFearState;
@@ -26,11 +26,6 @@ public class PlayerFear : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.gamePlayTime > 30f)
-        {
-            // 30초가 지나면 공포게이지 2배 증가
-            fearIncreaseRate *= 2;
-        }
 
         if (currentFearPercentage < maxFearPercentage)
         {
@@ -53,11 +48,6 @@ public class PlayerFear : MonoBehaviour
         else
         {
             currentFearState = FearState.Fear3;
-        }
-
-        if (currentFearState != preFearState)
-        {
-            Debug.Log($"공포 단계 변경! -> {currentFearState}");
         }
     }
 }

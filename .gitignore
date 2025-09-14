@@ -1,0 +1,32 @@
+# ========== Unity 필수 무시 폴더 ==========
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# ========== IDE/에디터 관련 ==========
+.vs/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+
+# ========== OS/기타 ==========
+.DS_Store
+Thumbs.db
+
+# ========== Unity Cache/Auto Generated ==========
+*.unitypackage
+*.apk
+*.aab
+*.app
+*.xcworkspace
+*.xcuserstate

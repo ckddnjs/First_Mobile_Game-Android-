@@ -348,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 7.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -574,7 +574,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 1617017228}
   - component: {fileID: 1617017234}
   - component: {fileID: 1617017235}
+  - component: {fileID: 1617017236}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -659,8 +660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d989ff6beef6e428186aaf33f9a819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  mouseSensitivity: 100
+  speed: 10
+  mouseSensitivity: 150
 --- !u!136 &1617017230
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &1617017235
 MonoBehaviour:
@@ -794,9 +795,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFearPercentage: 0
   maxFearPercentage: 100
-  fearIncreaseRate: 0.5
+  fearIncreaseRate: 2
   currentFearState: 0
   preFearState: 0
+--- !u!114 &1617017236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617017227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7e2682a9ac5b04da1abde9febdca77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  pRigid: {fileID: 0}
+  pMove: {fileID: 0}
+  isDead: 0
 --- !u!1 &2032300653
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +879,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 02a4df92d7c582b49adb8b6654fe5cf4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -906,6 +924,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2053156018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2053156020}
+  - component: {fileID: 2053156019}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2053156019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053156018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d015f79321b314ebb5d3e51adaa0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pFear: {fileID: 1617017235}
+--- !u!4 &2053156020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053156018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 451.875, y: 187.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -916,3 +979,4 @@ SceneRoots:
   - {fileID: 1617017233}
   - {fileID: 477214180}
   - {fileID: 474155159}
+  - {fileID: 2053156020}

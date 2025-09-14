@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     private Rigidbody playerRigid;
     private Transform playerCamera;
 
-    public float speed = 3.0f;
+    public float speed = 10.0f;
     public float mouseSensitivity = 150.0f;
 
     float xRotation = 0f;
