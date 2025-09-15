@@ -20,10 +20,8 @@ public class Player : MonoBehaviour
         // 회전은 물리에 영향x 설정
         playerRigid.freezeRotation = true;
 
-        // 마우스 중앙 고정
-        Cursor.lockState = CursorLockMode.Locked; 
     }
-
+     
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");

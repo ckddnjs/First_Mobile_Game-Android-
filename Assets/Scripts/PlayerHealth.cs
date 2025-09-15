@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     public Rigidbody pRigid;
     public Player pMove;
+    public Slider healthSlider;
 
     public bool isDead = false;
 
@@ -17,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         pRigid = GetComponent<Rigidbody>();
         pMove = GetComponent<Player>();
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     void Update()
@@ -36,8 +40,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); 
+        // healthSlider에 값 입력
+        healthSlider.value = currentHealth;
 
-        Debug.Log("플레이어 현재 체력 : " + currentHealth);
+        Debug.Log("플레이어 데미지 : " + damage + ", 플레이어 현재 체력 : " + currentHealth);
 
         if(currentHealth <= 0)
         {
@@ -45,6 +52,16 @@ public class PlayerHealth : MonoBehaviour
             isDead = true;
             StartCoroutine(Die());
         }
+    }
+
+    public void Heal(float healamount)
+    {
+        currentHealth += healamount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        healthSlider.value = currentHealth;
+
+        Debug.Log("플레이어 체력 회복량 : " + healamount + ", 플레이어 현재 체력 : " + currentHealth);
     }
 
     IEnumerator Die()
