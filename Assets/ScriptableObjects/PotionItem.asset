@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PotionItem
   m_EditorClassIdentifier: 
   itemName: Potion
-  icon: {fileID: 0}
+  prefab: {fileID: 5954571460504373374, guid: 35df55238535c58478743a566756811f, type: 3}
   description: You can heal your health
   itemType: 0

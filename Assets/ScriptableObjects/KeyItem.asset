@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: KeyItem
   m_EditorClassIdentifier: 
   itemName: Key
-  icon: {fileID: 0}
+  prefab: {fileID: 406399729188992974, guid: 8f98eed07c03b7d4eadfd679456eb46d, type: 3}
   description: You need this key to open the door
   itemType: 3

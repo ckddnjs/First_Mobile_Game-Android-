@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SpeedUpItem
   m_EditorClassIdentifier: 
   itemName: SpeedyUp
-  icon: {fileID: 0}
+  prefab: {fileID: 7434890684857238227, guid: 8fe728c333a523a4da724b2ab7fe8672, type: 3}
   description: Your speed up for 5 seconds
   itemType: 2

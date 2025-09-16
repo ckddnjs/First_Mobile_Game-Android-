@@ -4,7 +4,7 @@ using UnityEngine;
 public class ItemDataSet : ScriptableObject
 {
     public string itemName;
-    public Sprite icon;
+    public GameObject prefab;
     public string description;
     public ItemType itemType;
 }
