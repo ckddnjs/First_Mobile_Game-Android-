@@ -16,3 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 406399729188992974, guid: 8f98eed07c03b7d4eadfd679456eb46d, type: 3}
   description: You need this key to open the door
   itemType: 3
+  sprite: {fileID: 21300000, guid: 88e1e9fd9d34e8f48a21407f273954f2, type: 3}

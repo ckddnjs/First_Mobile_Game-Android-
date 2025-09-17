@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Update()
     {
-        
+        PrintInventory(); /// 단지 인벤토리 확인을 위한 코드
     }
 
     public void AddItem(ItemDataSet item)
@@ -30,5 +30,14 @@ public class PlayerInventory : MonoBehaviour
             }
         } 
         return false;
+    }
+
+    public void PrintInventory()
+    {
+        Debug.Log("현재 인벤토리:");
+        foreach (var item in items)
+        {
+            Debug.Log(" - " + item.itemName + " (" + item.itemType + ")");
+        }
     }
 }

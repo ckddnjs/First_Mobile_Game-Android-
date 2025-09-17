@@ -16,3 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 4937869557709856521, guid: 9bc4d848b02d7c14eb630009d3d2c4f6, type: 3}
   description: you can escape from dark for 5 seconds
   itemType: 1
+  sprite: {fileID: 21300000, guid: e1c02438c1d395841b8c0dc19bd4e061, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 public class Player : MonoBehaviour
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
                     // 코드 만들기
                     break;
                 case ItemType.Key:
-                    // 코드 만들기
+                    GetKey(item.itemData);
                     break;
             }
             Destroy(other.gameObject); // 1회용 아이템, key는 예외로 하던지 생각@@
@@ -104,6 +105,18 @@ public class Player : MonoBehaviour
             {
                 pHealth.Heal(healthUpAmount);
             }
+        } 
+    }
+
+    private void GetKey(ItemDataSet keyData)
+    {
+        PlayerInventory pInvent = GetComponent<PlayerInventory>();
+        pInvent.AddItem(keyData);
+
+        InventoryUIManager inventoryUI = FindObjectOfType<InventoryUIManager>();
+        if(inventoryUI != null)
+        {
+            inventoryUI.AddItem(keyData);
         }
     }
 }

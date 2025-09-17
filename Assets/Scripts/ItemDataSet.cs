@@ -7,6 +7,7 @@ public class ItemDataSet : ScriptableObject
     public GameObject prefab;
     public string description;
     public ItemType itemType;
+    public Sprite sprite;
 }
 
 public enum ItemType
