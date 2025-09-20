@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody playerRigid;
     private Transform playerCamera;
+    private PlayerInventory pInvent;
 
     public float speed = 10.0f;
     float preSpeed;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     {
         playerRigid = GetComponent<Rigidbody>();
         playerCamera = Camera.main.transform;
+        pInvent = GetComponent<PlayerInventory>();
 
         // 회전은 물리에 영향x 설정
         playerRigid.freezeRotation = true;
@@ -63,13 +65,13 @@ public class Player : MonoBehaviour
             switch (item.itemData.itemType)
             {
                 case ItemType.Potion:
-                    HealthUp();
+                    GetHealth(item.itemData);
                     break;
                 case ItemType.SpeedUp:
-                    SpeedUp();
+                    GetSpeedUp(item.itemData);
                         break;
                 case ItemType.BrightSight:
-                    // 코드 만들기
+                    GetBrightSight(item.itemData);
                     break;
                 case ItemType.Key:
                     GetKey(item.itemData);
@@ -79,44 +81,33 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SpeedUp()
+    private void GetSpeedUp(ItemDataSet item)
     {
-        preSpeed = speed;
-        speed = 17; // 기존 스피드 10
-        StartCoroutine(SpeedDuration());
+        pInvent.AddItem(item);
+        //preSpeed = speed;
+        //speed = 17; // 기존 스피드 10
+        //StartCoroutine(SpeedDuration());
+
     }
 
-    IEnumerator SpeedDuration()
+    //IEnumerator SpeedDuration()
+    //{
+    //    yield return new WaitForSeconds(speedUpDurationTime); 
+    //    speed = preSpeed;
+    //}
+
+    private void GetHealth(ItemDataSet item)
     {
-        yield return new WaitForSeconds(speedUpDurationTime); 
-        speed = preSpeed;
+        pInvent.AddItem(item); 
     }
 
-    private void HealthUp()
+    private void GetKey(ItemDataSet item)
     {
-        PlayerHealth pHealth = GetComponent<PlayerHealth>();
-        if(pHealth != null)
-        {
-            if(pHealth.currentHealth == pHealth.maxHealth)
-            {
-                return;
-            }
-            else
-            {
-                pHealth.Heal(healthUpAmount);
-            }
-        } 
+        pInvent.AddItem(item);
     }
 
-    private void GetKey(ItemDataSet keyData)
+    private void GetBrightSight(ItemDataSet item)
     {
-        PlayerInventory pInvent = GetComponent<PlayerInventory>();
-        pInvent.AddItem(keyData);
-
-        InventoryUIManager inventoryUI = FindObjectOfType<InventoryUIManager>();
-        if(inventoryUI != null)
-        {
-            inventoryUI.AddItem(keyData);
-        }
+        pInvent.AddItem(item);
     }
 }

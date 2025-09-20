@@ -4,20 +4,36 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Image image;
-    private ItemDataSet currentItem;
+    public Button button;
+    public Image icon;
+    private ItemDataSet item;
 
-    public void SetItem(ItemDataSet item)
+    public void AddItem(ItemDataSet newItem)
     {
-        currentItem = item;
-        image.sprite = item.sprite;
-        image.enabled = true;
+        item = newItem;
+        icon.sprite = item.sprite;
+        icon.enabled = true;
+
+      //  button.interactable = true; //???
+       // button.onClick.AddListener(OnClick);
     }
 
     public void ClearSlot()
     {
-        currentItem = null;
-        image.sprite = null;
-        image.enabled = false;
+        item = null;
+        icon.sprite = null;
+        icon.enabled = false;
+       // button.interactable = false;
+       // button.onClick.RemoveAllListener(); //?
+    }
+
+    public bool IsEmpty()
+    {
+        return item == null;
+    }
+
+    private void OnClick()
+    {
+        Debug.Log("아이템 클릭됨 : " + item.itemName);
     }
 }
