@@ -8,12 +8,17 @@ public class Player : MonoBehaviour
     private Rigidbody playerRigid;
     private Transform playerCamera;
     private PlayerInventory pInvent;
+    
+    public bool HasKey = false; // 이거 미흡(보안)
 
     public float speed = 10.0f;
     float preSpeed;
     public float mouseSensitivity = 150.0f;
     public float speedUpDurationTime = 5.0f;
     public float healthUpAmount = 10.0f;
+    public float inventoryMaxCount = 4;
+
+    public InventoryUIManager inventoryManage;
 
     float xRotation = 0f;
     Vector3 moveInput;
@@ -59,6 +64,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (inventoryManage.uiItems.Count >= inventoryMaxCount) 
+        {
+            Debug.Log("인벤토리 4개참 안돼");
+            return;
+        }
+
         ItemPickedUp item = other.GetComponent<ItemPickedUp>();
         if(item != null)
         {
@@ -77,37 +88,38 @@ public class Player : MonoBehaviour
                     GetKey(item.itemData);
                     break;
             }
-            Destroy(other.gameObject); // 1회용 아이템, key는 예외로 하던지 생각@@
+            Destroy(other.gameObject); // 이거의 용도?@@
         }
     }
 
     private void GetSpeedUp(ItemDataSet item)
     {
         pInvent.AddItem(item);
-        //preSpeed = speed;
-        //speed = 17; // 기존 스피드 10
-        //StartCoroutine(SpeedDuration());
-
     }
-
-    //IEnumerator SpeedDuration()
-    //{
-    //    yield return new WaitForSeconds(speedUpDurationTime); 
-    //    speed = preSpeed;
-    //}
-
     private void GetHealth(ItemDataSet item)
     {
-        pInvent.AddItem(item); 
+        pInvent.AddItem(item);
     }
-
     private void GetKey(ItemDataSet item)
     {
         pInvent.AddItem(item);
     }
-
     private void GetBrightSight(ItemDataSet item)
     {
         pInvent.AddItem(item);
     }
+
+    public void ItemSpeedUp()
+    {
+        preSpeed = speed;
+        speed = 17; // 기존 스피드 10
+        StartCoroutine(SpeedDuration());
+    }
+    IEnumerator SpeedDuration()
+    {
+        yield return new WaitForSeconds(speedUpDurationTime);
+        speed = preSpeed;
+    }
+
+    
 }

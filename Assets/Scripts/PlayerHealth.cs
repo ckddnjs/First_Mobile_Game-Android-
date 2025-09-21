@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
+    public float healAmount = 10f;
 
     public Rigidbody pRigid;
     public Player pMove;
@@ -54,14 +55,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(float healamount)
+    public bool Heal()
     {
-        currentHealth += healamount;
+        if (currentHealth == maxHealth)
+        {
+            Debug.Log("초과회복 우려, 사용안댐!");
+            return false;
+        }
+        currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
         healthSlider.value = currentHealth;
 
-        Debug.Log("플레이어 체력 회복량 : " + healamount + ", 플레이어 현재 체력 : " + currentHealth);
+        Debug.Log("플레이어 체력 회복량 : " + healAmount + ", 플레이어 현재 체력 : " + currentHealth);
+        return true;
     }
 
     IEnumerator Die()
